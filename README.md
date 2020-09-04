@@ -31,7 +31,9 @@ MyMapChannel {}
 
 Give it stuff, get back your `IdentityToken<O>`:
 
-`MyInstance.connect(stuff_to_process)`
+```
+MyInstance.connect(stuff_to_process)
+```
 
 Get back transformed stuff:
 
