@@ -6,7 +6,10 @@ Creating a `MapChannel`:
 To make things more organized and reusable, `MapChannel` is a `trait`.
 
 Using it is more verbose, but the benefits include:
-- Reusability: Re
+- Reusability: You can reuse the map channels you create
+- Safety: Type safety guarentees are built into Rust's trait system
+- Extensibility: Rust has existential types, which means that any map channel can be represented as `impl MapChannel<InType,OutType>`.
+- Awesome: Rust's traits are the coolest thing ever, and it's impossible not to love them. 
 
 ```
 #[derive(Copy,Clone)]
@@ -18,4 +21,20 @@ impl MapChannel<InType,OutType> for MyMapChannel {
 }
 ```
 
-Your new `MapChannel`
+Your new `MapChannel` can now be used:
+
+Create an instance:
+
+`MyMapChannel {}`
+
+Give it stuff, get back your `IdentityToken<O>`:
+
+`MyInstance.connect(stuff_to_process)`
+
+Get back transformed stuff:
+
+`MyInstance.find(my_identity_token)`
+
+FAQ:
+- Why the heck does `IdentityToken<O>` exist? Why not just use a `mpsc::Receiver<O>`? Why does it need a UUID?
+  - Debugging would by a nightmare without the UUID, all instances of the same map channel would look exactly the same!
