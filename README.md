@@ -25,7 +25,9 @@ Your new `MapChannel` can now be used:
 
 Create an instance:
 
-`MyMapChannel {}`
+```
+MyMapChannel {}
+```
 
 Give it stuff, get back your `IdentityToken<O>`:
 
