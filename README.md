@@ -25,13 +25,13 @@ Your new `MapChannel` can now be used:
 
 Create an instance:
 
-```
+```rust
 MyMapChannel {}
 ```
 
 Give it stuff, get back your `IdentityToken<O>`:
 
-```
+```rust
 MyInstance.connect(stuff_to_process)
 ```
 
