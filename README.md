@@ -11,7 +11,7 @@ Using it is more verbose, but the benefits include:
 - Extensibility: Rust has existential types, which means that any map channel can be represented as `impl MapChannel<InType,OutType>`.
 - Awesome: Rust's traits are the coolest thing ever, and it's impossible not to love them. 
 
-rust```
+```
 #[derive(Copy,Clone)]
 struct MyMapChannel {}
 impl MapChannel<InType,OutType> for MyMapChannel {
