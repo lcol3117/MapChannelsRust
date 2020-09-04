@@ -37,7 +37,9 @@ MyInstance.connect(stuff_to_process)
 
 Get back transformed stuff:
 
-`MyInstance.find(my_identity_token)`
+```
+MyInstance.find(my_identity_token)
+```
 
 FAQ:
 - Why the heck does `IdentityToken<O>` exist? Why not just use a `mpsc::Receiver<O>`? Why does it need a UUID?
