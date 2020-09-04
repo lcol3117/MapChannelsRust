@@ -37,7 +37,7 @@ MyInstance.connect(stuff_to_process)
 
 Get back transformed stuff:
 
-```
+```rust
 MyInstance.find(my_identity_token)
 ```
 
