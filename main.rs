@@ -46,20 +46,30 @@ impl<O> IdentityToken<O> {
   }
 }
 
+macro_rules! mc {
+  {$n:ident($ni:ident : $ti:ty) -> $to:ty {$b:expr}} => {
+    #[derive(Copy,Clone)]
+    struct $n {}
+    impl MapChannel<$ti,$to> for $n {
+      fn pass(&self, $ni : $ti) -> $to {
+        $b
+      }
+    }
+  }
+}
+
 // DEMO EXAMPLE TEST THINGY
+
+mc! {
+  Greet(name: String) -> String {
+    "Hello "
+      .to_owned()
+      + &name
+  }
+}
 
 fn main() {
   let greeter = Greet {};
   let landon_id = greeter.connect("landon".to_owned());
   println!("{}", greeter.find(landon_id));
-}
-
-#[derive(Copy,Clone)]
-struct Greet {}
-impl MapChannel<String, String> for Greet {
-  fn pass(&self, name: String) -> String {
-    "Hello "
-      .to_owned()
-      + &name
-  }
 }
