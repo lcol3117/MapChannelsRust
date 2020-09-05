@@ -54,5 +54,5 @@ MyInstance.find(my_identity_token)
 FAQ:
 - Why the heck does `IdentityToken<O>` exist? Why not just use a `mpsc::Receiver<O>`? Why does it need a UUID?
   - Debugging would by a nightmare without the UUID, all instances of the same map channel would look exactly the same!
-- Why can I only recieve once with the same identity token?
-  - This is an issue ( #3 ), it should be improved soon. 
+- Why can I only `find` once with the same `identityToken<O>`?
+  - This is due to the unsafety of cloning a `mpsc::Reciever<O>`. 
