@@ -21,6 +21,16 @@ impl MapChannel<InType,OutType> for MyMapChannel {
 }
 ```
 
+Just kidding! You don't need to do that, Rust has an awesome macro system:
+
+```rust
+mc! {
+  MyMapChannel(input_name: InType) -> OutType {
+    // Do stuff
+  }
+}
+```
+
 Your new `MapChannel` can now be used:
 
 Create an instance:
@@ -44,3 +54,5 @@ MyInstance.find(my_identity_token)
 FAQ:
 - Why the heck does `IdentityToken<O>` exist? Why not just use a `mpsc::Receiver<O>`? Why does it need a UUID?
   - Debugging would by a nightmare without the UUID, all instances of the same map channel would look exactly the same!
+- Why can I only recieve once with the same identity token?
+  - This is an issue ( #3 ), it should be improved soon. 
